@@ -51,6 +51,11 @@ body {
   width: 25px;
 }
 
+.editbtn {
+  text-align: center;
+  height: 25px;
+}
+
 /* MODAL WINDOW */
 .taskDescription {
   position: fixed;

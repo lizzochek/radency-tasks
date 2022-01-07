@@ -2,7 +2,7 @@
 
 //Buttons in rows code
 const buttonInRow =
-  '<button class="btn archivebtn"> <i class="fas fa-archive"></i> </button> <button class="btn deletebtn"><i class="far fa-trash-alt"></i></button>';
+  '<button class="editbtn">  <i class="far fa-edit"></i></button><button class="btn archivebtn"><i class="fas fa-archive"></i></button><button class="btn deletebtn"><i class="far fa-trash-alt"></i></button>';
 const select = document.querySelector(".list");
 
 const getDate = () => {
