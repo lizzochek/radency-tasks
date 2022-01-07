@@ -1,49 +1,121 @@
-
 body {
-    font-family: "Open Sans", sans-serif;
-    background-color: #e4e4e4;
-    justify-content: center;
-    overflow: hidden;
+  font-family: "Open Sans", sans-serif;
+  background-color: #e4e4e4;
+  justify-content: center;
+  overflow: hidden;
 }
-  
 
+/* TABLES */
 .table {
-    border: 1px solid black;
-    width: 100%;
-    border-collapse: collapse;
-    background-color: #ffffff;
-    
+  border: 1px solid black;
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
 }
-
 
 .table td {
-    border: 1px solid rgb(15, 10, 10);
-    padding: 8px;
-    text-align: center;
+  border: 1px solid rgb(15, 10, 10);
+  padding: 8px;
+  text-align: center;
 }
 
 .table th {
-    border: 1px solid rgb(15, 10, 10);
-    padding: 8px;
-    text-align: center;
-    color: #ffffff;
-    background-color: #8f8f8f;
+  border: 1px solid rgb(15, 10, 10);
+  padding: 8px;
+  text-align: center;
+  color: #ffffff;
+  background-color: #8f8f8f;
 }
 
-#createNote {
-    text-align: center;
-    float: right;
-    margin: 10px;
-    padding: 1px;
-    height:50px;
-    width:100px;
+/* BUTTONS */
+.btn {
+  text-align: center;
+  margin: 10px;
+  padding: 1px;
+  height: 50px;
 }
 
-#seeArchived {
-    text-align: center;
-    float: left;
-    margin: 10px;
-    padding: 1px;
-    height:50px;
-    width:150px;
+.createNote {
+  float: right;
+  width: 100px;
+}
+
+.seeArchived {
+  float: left;
+  width: 150px;
+}
+
+.archivebtn,
+.deletebtn {
+  height: 25px;
+  width: 25px;
+}
+
+/* MODAL WINDOW */
+.taskDescription {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 50rem;
+  background-color: #f3f3f3;
+  padding: 5rem 6rem;
+  box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  transition: all 0.5s;
+}
+
+.taskDescriptionHeader {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  margin-left: 110px;
+  margin-right: 110px;
+  line-height: 1.5;
+}
+
+.taskDescriptionForm {
+  margin: 0 3rem;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.taskDescriptionForm label {
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.taskDescriptionForm input {
+  font-size: 0.8rem;
+  padding: 1rem 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+}
+
+.taskDescriptionForm button {
+  grid-column: 1 / span 2;
+  justify-self: center;
+  margin-top: 1rem;
+  font-size: 1.25rem;
+  font-weight: 300;
+  width: 250px;
+  height: 50px;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+  transition: all 0.5s;
 }
