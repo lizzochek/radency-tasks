@@ -13,7 +13,7 @@
     <title>Task app</title>
   </head>
   <body>
-    <table class="table" id="tableActive">
+    <table class="table tableActive">
       <tr>
         <th>Name</th>
         <th>Created</th>
@@ -41,7 +41,7 @@
     <button class="btn seeArchived">See archived tasks</button>
     <button class="btn createNote">Create note</button>
 
-    <table class="table">
+    <table class="table tableCount">
       <tr>
         <th>Note Category</th>
         <th>Active</th>
@@ -64,7 +64,7 @@
       </tr>
     </table>
 
-    <table class="table hidden" id="tableArchived">
+    <table class="table hidden tableArchived">
       <tr>
         <th>Name</th>
         <th>Created</th>
@@ -103,6 +103,6 @@
       </form>
     </div>
     <div class="overlay hidden"></div>
-    <script src="./src/index.js"></script>
+    <script type="module" src="./src/index.js"></script>
   </body>
 </html>
