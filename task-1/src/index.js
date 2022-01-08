@@ -1,7 +1,7 @@
 "use strict";
 
 //Helpers
-import { addRow } from "./addRow.js";
+import { addRow, deleteAllRows } from "./helpers.js";
 
 //Tables
 
@@ -15,7 +15,7 @@ const seeArchived = document.querySelector(".seeArchived");
 
 //Buttons on tasks
 const archiveNote = document.querySelectorAll(".archivebtn");
-const deleteNote = document.querySelectorAll(".deletebtn");
+const deleteNotes = document.querySelectorAll(".deletebtn");
 
 //Modal window
 const taskDescription = document.querySelector(".taskDescription");
@@ -38,4 +38,16 @@ addTaskBtn.addEventListener("click", (e) => {
   taskDescriptionForm.reset();
   taskDescription.classList.add("hidden");
   overlay.classList.add("hidden");
+});
+
+deleteNotes.forEach((btn, index) => {
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    if (index === 0) {
+      deleteAllRows(activeTable);
+    } else {
+      activeTable.deleteRow(index);
+    }
+  });
 });
