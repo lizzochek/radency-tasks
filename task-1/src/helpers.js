@@ -23,8 +23,8 @@ const getDataFromList = (listEl) => {
   return listEl.options[listEl.selectedIndex].text;
 };
 
-export const addRow = (table, input) => {
-  let newRow = table.insertRow(-1);
+export const addRow = (activeTable, archivedTable, input) => {
+  let newRow = activeTable.insertRow(-1);
 
   let datesFromContent = getDatesFromString(input[1].value);
 
@@ -35,7 +35,7 @@ export const addRow = (table, input) => {
   newRow.insertCell(4).innerHTML = datesFromContent;
   newRow.insertCell(5).insertAdjacentHTML("afterbegin", buttonInRow);
 
-  let row = table.rows.item(table.rows.length - 1);
+  let row = activeTable.rows.item(activeTable.rows.length - 1);
   let cell = row.cells[row.cells.length - 1];
   let buttons = cell.childNodes;
 
@@ -43,15 +43,21 @@ export const addRow = (table, input) => {
   let archiveBtn = buttons[1];
   let deleteBtn = buttons[2];
 
+  archiveBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    archivedTable.appendChild(row.cloneNode(true));
+    activeTable.deleteRow(row.rowIndex);
+  });
+
   deleteBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    table.deleteRow(row.rowIndex);
+    activeTable.deleteRow(row.rowIndex);
   });
 };
 
-export const deleteAllRows = (table) => {
-  let rowCount = table.rows.length;
+export const deleteAllRows = (activeTable) => {
+  let rowCount = activeTable.rows.length;
   for (let i = rowCount - 1; i > 0; i--) {
-    table.deleteRow(i);
+    activeTable.deleteRow(i);
   }
 };
