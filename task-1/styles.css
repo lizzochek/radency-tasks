@@ -46,14 +46,10 @@ body {
 }
 
 .archivebtn,
-.deletebtn {
+.deletebtn,
+.editbtn {
   height: 25px;
   width: 25px;
-}
-
-.editbtn {
-  text-align: center;
-  height: 25px;
 }
 
 /* MODAL WINDOW */
