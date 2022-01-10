@@ -23,7 +23,79 @@ const getDataFromList = (listEl) => {
   return listEl.options[listEl.selectedIndex].text;
 };
 
-export const addRow = (activeTable, archivedTable, input) => {
+export const chooseButtonsForTable = (table, className) => {
+  let elements = table.getElementsByClassName(className);
+  return elements;
+};
+
+export const chooseButtonsForRow = (table, index) => {
+  let row = table.rows.item(index);
+
+  let editBtn = row.getElementsByClassName("btn editbtn")[0];
+  let archiveBtn = row.getElementsByClassName("btn archivebtn")[0];
+  let deleteBtn = row.getElementsByClassName("btn deletebtn")[0];
+
+  return [row, editBtn, archiveBtn, deleteBtn];
+};
+
+export const addEventListeners = (
+  tableFrom,
+  tableTo,
+  row,
+  editBtn,
+  archiveBtn,
+  deleteBtn
+) => {
+  archiveBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    if (row.rowIndex === 0) {
+      for (let i = 1; i < tableFrom.rows.length; i++) {
+        tableTo.appendChild(tableFrom.rows[i].cloneNode(true));
+
+        let [rowArchive, editBtnArchive, archiveBtnArchive, deleteBtnArchive] =
+          chooseButtonsForRow(tableTo, tableTo.rows.length - 1);
+
+        addEventListeners(
+          tableTo,
+          tableFrom,
+          rowArchive,
+          editBtnArchive,
+          archiveBtnArchive,
+          deleteBtnArchive
+        );
+      }
+      deleteAllRows(tableFrom);
+    } else {
+      tableTo.appendChild(row.cloneNode(true));
+      tableFrom.deleteRow(row.rowIndex);
+
+      let [rowArchive, editBtnArchive, archiveBtnArchive, deleteBtnArchive] =
+        chooseButtonsForRow(tableTo, tableTo.rows.length - 1);
+
+      addEventListeners(
+        tableTo,
+        tableFrom,
+        rowArchive,
+        editBtnArchive,
+        archiveBtnArchive,
+        deleteBtnArchive
+      );
+    }
+  });
+
+  deleteBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    if (row.rowIndex === 0) {
+      deleteAllRows(tableFrom);
+    } else {
+      tableFrom.deleteRow(row.rowIndex);
+    }
+  });
+};
+
+export const addRowToActive = (activeTable, archivedTable, input) => {
   let newRow = activeTable.insertRow(-1);
 
   let datesFromContent = getDatesFromString(input[1].value);
@@ -35,24 +107,17 @@ export const addRow = (activeTable, archivedTable, input) => {
   newRow.insertCell(4).innerHTML = datesFromContent;
   newRow.insertCell(5).insertAdjacentHTML("afterbegin", buttonInRow);
 
-  let row = activeTable.rows.item(activeTable.rows.length - 1);
-  let cell = row.cells[row.cells.length - 1];
-  let buttons = cell.childNodes;
+  let [rowActive, editBtnActive, archiveBtnActive, deleteBtnActive] =
+    chooseButtonsForRow(activeTable, activeTable.rows.length - 1);
 
-  let editBtn = buttons[0];
-  let archiveBtn = buttons[1];
-  let deleteBtn = buttons[2];
-
-  archiveBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    archivedTable.appendChild(row.cloneNode(true));
-    activeTable.deleteRow(row.rowIndex);
-  });
-
-  deleteBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    activeTable.deleteRow(row.rowIndex);
-  });
+  addEventListeners(
+    activeTable,
+    archivedTable,
+    rowActive,
+    editBtnActive,
+    archiveBtnActive,
+    deleteBtnActive
+  );
 };
 
 export const deleteAllRows = (activeTable) => {

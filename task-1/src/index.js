@@ -1,7 +1,15 @@
 "use strict";
 
 //Helpers
-import { addRow, deleteAllRows } from "./helpers.js";
+import {
+  addRowToActive,
+  deleteAllRows,
+  chooseButtonsForTable,
+  chooseButtonsForRow,
+  addEventListeners,
+} from "./helpers.js";
+
+import { addOnloadListeners } from "./onloadListeners.js";
 
 //Tables
 
@@ -12,10 +20,6 @@ const countTable = document.querySelector(".tableCount");
 //Buttons under first table
 const createNote = document.querySelector(".createNote");
 const seeArchived = document.querySelector(".seeArchived");
-
-//Buttons on tasks
-const archiveNote = document.querySelectorAll(".archivebtn");
-const deleteNotes = document.querySelectorAll(".deletebtn");
 
 //Modal window
 const taskDescription = document.querySelector(".taskDescription");
@@ -33,38 +37,25 @@ createNote.addEventListener("click", (e) => {
 
 addTaskBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  addRow(activeTable, archivedTable, input);
+  addRowToActive(activeTable, archivedTable, input);
 
   taskDescriptionForm.reset();
   taskDescription.classList.add("hidden");
   overlay.classList.add("hidden");
 });
 
-deleteNotes.forEach((btn, index) => {
-  btn.addEventListener("click", (e) => {
-    e.preventDefault();
-
-    if (index === 0) {
-      deleteAllRows(activeTable);
-    } else {
-      activeTable.deleteRow(index);
-    }
-  });
-});
-
-archiveNote.forEach((btn, index) => {
-  btn.addEventListener("click", (e) => {
-    e.preventDefault();
-    let el = activeTable.rows;
-
-    if (index === 0) {
-      for (let i = 1; i < el.length; i++) {
-        archivedTable.appendChild(el[i].cloneNode(true));
-      }
-      deleteAllRows(activeTable);
-    } else {
-      archivedTable.appendChild(el[index].cloneNode(true));
-      activeTable.deleteRow(index);
-    }
-  });
-});
+addOnloadListeners(activeTable, archivedTable);
+// for (let i = 0; i < activeTable.rows.length; i++) {
+//   let [row, editBtn, archiveBtn, deleteBtn] = chooseButtonsForRow(
+//     activeTable,
+//     i
+//   );
+//   addEventListeners(
+//     activeTable,
+//     archivedTable,
+//     row,
+//     editBtn,
+//     archiveBtn,
+//     deleteBtn
+//   );
+// }
