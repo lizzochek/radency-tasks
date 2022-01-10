@@ -1,15 +1,8 @@
 "use strict";
 
 //Helpers
-import {
-  addRowToActive,
-  deleteAllRows,
-  chooseButtonsForTable,
-  chooseButtonsForRow,
-  addEventListeners,
-} from "./helpers.js";
-
-import { addOnloadListeners } from "./onloadListeners.js";
+import { addRowToActive } from "./modules/addRowToActive.js";
+import { addOnloadListeners } from "./modules/onloadListeners.js";
 
 //Tables
 
@@ -45,17 +38,3 @@ addTaskBtn.addEventListener("click", (e) => {
 });
 
 addOnloadListeners(activeTable, archivedTable);
-// for (let i = 0; i < activeTable.rows.length; i++) {
-//   let [row, editBtn, archiveBtn, deleteBtn] = chooseButtonsForRow(
-//     activeTable,
-//     i
-//   );
-//   addEventListeners(
-//     activeTable,
-//     archivedTable,
-//     row,
-//     editBtn,
-//     archiveBtn,
-//     deleteBtn
-//   );
-// }

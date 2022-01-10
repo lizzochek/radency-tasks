@@ -1,6 +1,8 @@
 "use strict";
 
-import { addEventListeners, chooseButtonsForRow } from "./helpers.js";
+// import { addEventListeners, chooseButtonsForRow } from "./helpers.js";
+import { addEventListeners } from "./addEventListeners.js";
+import { chooseButtonsForRow } from "./chooseBtns.js";
 
 export const addOnloadListeners = (activeTable, archivedTable) => {
   for (let i = 0; i < activeTable.rows.length; i++) {
