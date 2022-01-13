@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Task app" />
+    <meta charset="UTF-8" />
+    <meta name="author" content="Dolhova Yelyzaveta" />
+    <link rel="stylesheet" href="styles.css" />
+    <script
+      src="https://kit.fontawesome.com/6ed23c9691.js"
+      crossorigin="anonymous"
+      async
+    ></script>
+
+    <title>Task app</title>
+  </head>
+  <body>
+    <table class="table tableActive">
+      <tr>
+        <th>Name</th>
+        <th>Created</th>
+        <th>Category</th>
+        <th>Content</th>
+        <th>Dates</th>
+        <th>
+          <button class="btn archivebtn">
+            <i class="fas fa-archive"></i></button
+          ><!-- 
+          --><button class="btn deletebtn">
+            <i class="far fa-trash-alt"></i>
+          </button>
+        </th>
+      </tr>
+      <tr>
+        <td>Buy coffee</td>
+        <td>15 December, 2021</td>
+        <td>Task</td>
+        <td>Nearest coffee shop</td>
+        <td></td>
+        <td>
+          <button class="btn editbtn">
+            <i class="far fa-edit"></i></button
+          ><!-- 
+          --><button class="btn archivebtn">
+            <i class="fas fa-archive"></i></button
+          ><!-- 
+         --><button class="btn deletebtn">
+            <i class="far fa-trash-alt"></i>
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td>Do hometask</td>
+        <td>9 January, 2022</td>
+        <td>Task</td>
+        <td>Maths and literature</td>
+        <td></td>
+        <td>
+          <button class="btn editbtn">
+            <i class="far fa-edit"></i></button
+          ><!-- 
+          --><button class="btn archivebtn">
+            <i class="fas fa-archive"></i></button
+          ><!-- 
+         --><button class="btn deletebtn">
+            <i class="far fa-trash-alt"></i>
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td>Paint a house</td>
+        <td>11 January, 2022</td>
+        <td>Idea</td>
+        <td>Take paint from Anne</td>
+        <td></td>
+        <td>
+          <button class="btn editbtn">
+            <i class="far fa-edit"></i></button
+          ><!-- 
+          --><button class="btn archivebtn">
+            <i class="fas fa-archive"></i></button
+          ><!-- 
+         --><button class="btn deletebtn">
+            <i class="far fa-trash-alt"></i>
+          </button>
+        </td>
+      </tr>
+    </table>
+
+    <table class="table tableArchived">
+      <tr>
+        <th>Name</th>
+        <th>Created</th>
+        <th>Category</th>
+        <th>Content</th>
+        <th>Dates</th>
+        <th>
+          <button class="btn archivebtn">
+            <i class="fas fa-archive"></i>
+          </button>
+          <button class="btn deletebtn">
+            <i class="far fa-trash-alt"></i>
+          </button>
+        </th>
+      </tr>
+    </table>
+
+    <button class="btn seeArchived">See archived tasks</button>
+    <button class="btn createNote">Create note</button>
+
+    <table class="table tableCount">
+      <tr>
+        <th>Note Category</th>
+        <th>Active</th>
+        <th>Archived</th>
+      </tr>
+      <tr>
+        <td><i class="fas fa-tasks"></i> Task</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td><i class="fas fa-brain"></i> Random thought</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td><i class="fas fa-lightbulb"></i> Idea</td>
+        <td>0</td>
+        <td>0</td>
+      </tr>
+    </table>
+
+    <div class="taskDescription hidden">
+      <h1 class="taskDescriptionHeader">Create your note</h1>
+      <form class="taskDescriptionForm">
+        <label>Name</label>
+        <input type="text" placeholder="Add task name" />
+        <label>Category</label>
+        <select class="btn list">
+          <option class="option" id="1" selected>Task</option>
+          <option class="option" id="2">Random thought</option>
+          <option class="option" id="3">Idea</option>
+        </select>
+        <label>Content</label>
+        <input type="text" placeholder="Add a description" />
+        <button class="btn addTask">Add</button>
+        <button class="btn addEdit">Edit</button>
+      </form>
+    </div>
+    <div class="overlay hidden"></div>
+    <script type="module" src="./src/index.js"></script>
+  </body>
+</html>
