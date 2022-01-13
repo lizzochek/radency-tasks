@@ -7,7 +7,7 @@ import { getDate, getDatesFromString, getDataFromList } from "./helpers.js";
 const buttonInRow = `<button class="btn editbtn">  <i class="far fa-edit"></i></button><button class="btn archivebtn"><i class="fas fa-archive"></i></button><button class="btn deletebtn"><i class="far fa-trash-alt"></i></button>`;
 const select = document.querySelector(".list");
 
-export const addRowToActive = (activeTable, archivedTable, input) => {
+export const addRowToActive = (activeTable, archivedTable, input, rowIndex) => {
   let newRow = activeTable.insertRow(-1);
 
   let datesFromContent = getDatesFromString(input[1].value);
@@ -20,7 +20,7 @@ export const addRowToActive = (activeTable, archivedTable, input) => {
   newRow.insertCell(5).insertAdjacentHTML("afterbegin", buttonInRow);
 
   let [rowActive, editBtnActive, archiveBtnActive, deleteBtnActive] =
-    chooseButtonsForRow(activeTable, activeTable.rows.length - 1);
+    chooseButtonsForRow(activeTable, rowIndex);
 
   addEventListeners(
     activeTable,
