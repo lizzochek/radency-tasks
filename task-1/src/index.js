@@ -3,13 +3,18 @@
 //Helpers
 import { addRowToActive } from "./modules/addRowToActive.js";
 import { addOnloadListeners } from "./modules/onloadListeners.js";
-import { getDataFromList, getDatesFromString } from "./modules/helpers.js";
+import {
+  getDataFromList,
+  getDatesFromString,
+  toggleTable,
+} from "./modules/helpers.js";
 
 //Tables
 
 const activeTable = document.querySelector(".tableActive");
 const archivedTable = document.querySelector(".tableArchived");
 const countTable = document.querySelector(".tableCount");
+const select = document.querySelector(".list");
 
 //Buttons under first table
 const createNote = document.querySelector(".createNote");
@@ -23,8 +28,10 @@ const addTaskBtn = document.querySelector(".addTask");
 const addEditBtn = document.querySelector(".addEdit");
 const overlay = document.querySelector(".overlay");
 
-const select = document.querySelector(".list");
 //Event listeners
+archivedTable.style.display = "none";
+activeTable.style.display = "";
+
 createNote.addEventListener("click", (e) => {
   e.preventDefault();
   taskDescription.classList.remove("hidden");
@@ -61,4 +68,10 @@ addEditBtn.addEventListener("click", (e) => {
   taskDescriptionForm.reset();
   taskDescription.classList.add("hidden");
   overlay.classList.add("hidden");
+});
+
+seeArchived.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  toggleTable(activeTable, archivedTable, seeArchived);
 });

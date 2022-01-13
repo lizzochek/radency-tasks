@@ -24,3 +24,15 @@ export const deleteAllRows = (activeTable) => {
     activeTable.deleteRow(i);
   }
 };
+
+export const toggleTable = (tableOne, tableTwo, button) => {
+  if (tableOne.style.display === "none") {
+    tableOne.style.display = "";
+    tableTwo.style.display = "none";
+    button.innerText = "See archived tasks";
+  } else {
+    tableTwo.style.display = "";
+    tableOne.style.display = "none";
+    button.innerText = "See unarchived tasks";
+  }
+};
