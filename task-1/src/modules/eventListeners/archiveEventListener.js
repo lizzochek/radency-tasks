@@ -3,6 +3,7 @@
 import { chooseButtonsForRow } from "../chooseBtns.js";
 import { deleteAllRows } from "../helpers.js";
 import { addEventListeners } from "../addEventListeners.js";
+import { fillCountTable } from "../fillCountTable.js";
 
 export const archiveEventListener = (e, tableFrom, tableTo, row) => {
   e.preventDefault();
@@ -39,5 +40,7 @@ export const archiveEventListener = (e, tableFrom, tableTo, row) => {
       archiveBtnArchive,
       deleteBtnArchive
     );
+
+    fillCountTable();
   }
 };

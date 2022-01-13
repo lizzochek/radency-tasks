@@ -3,6 +3,7 @@
 import { chooseButtonsForRow } from "./chooseBtns.js";
 import { addEventListeners } from "./addEventListeners.js";
 import { getDate, getDatesFromString, getDataFromList } from "./helpers.js";
+import { fillCountTable } from "./fillCountTable.js";
 
 const buttonInRow = `<button class="btn editbtn">  <i class="far fa-edit"></i></button><button class="btn archivebtn"><i class="fas fa-archive"></i></button><button class="btn deletebtn"><i class="far fa-trash-alt"></i></button>`;
 const select = document.querySelector(".list");
@@ -30,4 +31,6 @@ export const addRowToActive = (activeTable, archivedTable, input, rowIndex) => {
     archiveBtnActive,
     deleteBtnActive
   );
+
+  fillCountTable();
 };

@@ -3,6 +3,7 @@
 //Helpers
 import { addRowToActive } from "./modules/addRowToActive.js";
 import { addOnloadListeners } from "./modules/onloadListeners.js";
+import { fillCountTable } from "./modules/fillCountTable.js";
 import {
   getDataFromList,
   getDatesFromString,
@@ -10,7 +11,6 @@ import {
 } from "./modules/helpers.js";
 
 //Tables
-
 const activeTable = document.querySelector(".tableActive");
 const archivedTable = document.querySelector(".tableArchived");
 const countTable = document.querySelector(".tableCount");
@@ -31,6 +31,8 @@ const overlay = document.querySelector(".overlay");
 //Event listeners
 archivedTable.style.display = "none";
 activeTable.style.display = "";
+
+fillCountTable();
 
 createNote.addEventListener("click", (e) => {
   e.preventDefault();
